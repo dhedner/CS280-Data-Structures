@@ -1,0 +1,27 @@
+Implement Kruskal algorithm using disjoint sets.
+
+Roadmap: 
+1) implement disjoint sets (files disjoint_sets.h and disjoint_sets.cpp)
+Test using driver tests 0,...,10. Expected time - immediate.
+
+2) implement Kruskal algorithm (file kruskal.h) using disjoint sets.
+All tests should be immediate, except
+test16  0.2 seconds
+test17  2   seconds
+
+Note on test17:
+this is a "(very) small world" graph with 1,000,000 vertices.
+If you used "colors" instead of disjoint subsets in Kruskal implementation, 
+test17 will take forever. This is why this test will cost 30 points.
+
+tests 11,...,16 read graph from file.
+For tests 11,...,14 the files are available in 3 formats:
+g?          - the actual file that is read
+g?.dot      - dot-file
+g?.dot.pdf  - pdf generated from the above dot-file (for debugging?)
+
+Submit:
+kruskal.h (no kruskal.cpp, so implementation goes into the header)
+disjoint_sets.h
+disjoint_sets.cpp
+===============================================

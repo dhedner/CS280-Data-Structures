@@ -1,0 +1,30 @@
+PRG=gnu.exe
+
+GCC=g++
+GCCFLAGS=-Wall -Werror -Wextra -std=c++17 -pedantic -Wconversion -O2 -Wno-unused-result
+
+OBJECTS0=water.cpp
+DRIVER0=driver.cpp
+
+VALGRIND_OPTIONS=-q --leak-check=full
+DIFF_OPTIONS=-y --strip-trailing-cr --suppress-common-lines -b
+
+OSTYPE := $(shell uname)
+ifeq ($(OSTYPE),Linux)
+CYGWIN=
+else
+CYGWIN=-Wl,--enable-auto-import
+endif
+
+gcc0:
+	$(GCC) -o $(PRG) $(CYGWIN) $(DRIVER0) $(OBJECTS0) $(GCCFLAGS)
+0 1 2 3 4 5 6 7: 
+	@echo "should run in less than 200 ms"
+	./$(PRG) $@ >studentout$@
+	diff out$@ studentout$@ $(DIFF_OPTIONS) > difference$@
+8: 
+	@echo "should run in less than 200 ms"
+	./$(PRG) $@ >studentout$@
+	diff out$@ studentout$@ $(DIFF_OPTIONS) > difference$@ 2>&1
+clean: 
+	rm *.exe student* difference*
